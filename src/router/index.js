@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Welcome from "../views/Welcome.vue";
 import Instructions from "../views/Instructions.vue";
-import VideoSelection from "../views/VideoSelection.vue";
+import Select from "../views/Select.vue";
 import VideoPlayer from "../views/VideoPlayer.vue";
 
 Vue.use(VueRouter);
@@ -21,7 +21,7 @@ const routes = [
   {
     path: "/select",
     name: "select",
-    component: VideoSelection,
+    component: Select,
   },
   {
     path: "/play",

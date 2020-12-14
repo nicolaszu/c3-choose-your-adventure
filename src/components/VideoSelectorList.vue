@@ -1,13 +1,18 @@
 <template>
-  <div class="relative wrapper">
-    <div class="max-height grid gap-4 grid-cols-3 overflow-y-auto relative ">
+  <div class="relative" :class="{ 'outer-wrapper': !isAtScrollEnd }">
+    <perfect-scrollbar
+      @ps-y-reach-end="hideGradient"
+      @ps-scroll-up="showGradient"
+      class="max-height grid main-wrapper gap-6 grid-cols-3 pr-8 h-0 min-h-full "
+    >
       <video-selector-card
         v-for="(video, index) in videos"
-        :key="currentCategorie + '' + index"
+        :key="currentCategory + '' + index"
         :id="video.id"
         :title="video.title"
+        :category="currentCategory"
       />
-    </div>
+    </perfect-scrollbar>
   </div>
 </template>
 
@@ -22,7 +27,7 @@ export default {
   },
 
   props: {
-    currentCategorie: {
+    currentCategory: {
       type: String,
       required: true,
     },
@@ -30,15 +35,26 @@ export default {
   data() {
     return {
       videoList: "",
+      isAtScrollEnd: false,
     };
   },
   async created() {
     this.videoList = await getVideos();
   },
   computed: {
-    ...mapState(["videoPlaylist", "videoCategories"]),
+    ...mapState(["videoPlaylist"]),
     videos() {
-      return this.videoList[this.currentCategorie];
+      return this.videoList[this.currentCategory];
+    },
+  },
+  methods: {
+    hideGradient() {
+      this.isAtScrollEnd = true;
+    },
+    showGradient() {
+      if (this.isAtScrollEnd) {
+        this.isAtScrollEnd = false;
+      }
     },
   },
 };
@@ -49,13 +65,17 @@ export default {
   max-height: 45rem;
 }
 
-.wrapper::after {
+.main-wrapper {
+  grid-template-columns: repeat(3, fit-content(10px));
+}
+
+.outer-wrapper::after {
   background: linear-gradient(
     180deg,
     rgba(162, 202, 212, 0) 0%,
     rgba(162, 202, 212, 1) 100%
   );
   content: " ";
-  @apply absolute bottom-0 w-full z-50 left-0 h-48;
+  @apply absolute bottom-0 w-full z-50 left-0 h-12;
 }
 </style>

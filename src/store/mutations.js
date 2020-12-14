@@ -4,7 +4,6 @@ export const mutations = {
   },
   REMOVE_VIDEO(state, id) {
     state.videoPlaylist = state.videoPlaylist.filter((videoID) => {
-      console.log(id !== videoID);
       return id !== videoID;
     });
   },

@@ -30,7 +30,7 @@
       </p>
     </main>
     <circular-message
-      class="col-start-4 row-start-2 message-size h-auto w-24  animate-spin-slow"
+      class="col-start-4 row-start-2 h-auto w-24  animate-spin-slow"
     />
     <c3-logo class="absolute bottom-0 left-0 height-auto w-28 my-7 mx-10" />
 

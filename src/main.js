@@ -5,7 +5,12 @@ import store from "./store";
 import VueYoutube from "vue-youtube";
 import "./assets/index.scss";
 import VueSocialSharing from "vue-social-sharing";
+import PerfectScrollbar from "vue2-perfect-scrollbar";
+import "./assets/perfect-scrollbar.scss";
+import VueContentPlaceholders from "vue-content-placeholders";
 
+Vue.use(VueContentPlaceholders);
+Vue.use(PerfectScrollbar);
 Vue.use(VueSocialSharing);
 
 Vue.use(VueYoutube);
