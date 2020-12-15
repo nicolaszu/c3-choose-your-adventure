@@ -20,6 +20,10 @@ svg {
   @apply fill-current;
 }
 
+.h-min {
+  height: min-content;
+}
+
 //fonts
 
 @import url("./fonts/Aeonik/stylesheet.css");

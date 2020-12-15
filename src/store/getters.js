@@ -16,4 +16,8 @@ export const getters = {
       return selectedCategory[0].color;
     };
   },
+  //returns array of objects of all videos rather than divided by categories
+  allVideos(state) {
+    return Object.values(state.videosByCategory).flat();
+  },
 };

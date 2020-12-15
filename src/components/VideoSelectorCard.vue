@@ -134,7 +134,9 @@ export default {
 }
 
 .image-wrapper {
-  padding-bottom: 50%;
+  padding-bottom: 0%;
+  height: 100px;
+  width: auto;
   @apply rounded-t-lg relative bg-white;
   img {
     @apply absolute top-0 left-0 w-full h-full object-cover rounded-t-lg;

@@ -31,7 +31,7 @@
         class="flex gap-4 items-center"
       >
         <circles-group
-          :color="category.color"
+          :color="getColor(category.color)"
           size="6"
           :style="{ gap: '.1rem' }"
         />
@@ -91,35 +91,13 @@ export default {
     return {
       videoList: "",
       currentCategory: "Worship",
-      categories: [
-        {
-          color: "bg-c3-green",
-          label: "Select your worship",
-          name: "Worship",
-        },
-        {
-          color: "bg-c3-orange",
-          label: "Select your story",
-          name: "Our Story",
-        },
-        {
-          color: "bg-c3-red",
-          label: "Select your preach",
-          name: "Preach",
-        },
-        {
-          color: "bg-c3-beige",
-          label: "Select your c3 kids episode",
-          name: "C3 Kids",
-        },
-      ],
     };
   },
   async created() {
     this.videoList = await getVideos();
   },
   computed: {
-    ...mapState(["videoPlaylist"]),
+    ...mapState(["videoPlaylist", "categories"]),
     ...mapGetters(["arrayCategories"]),
     videos() {
       return this.videoList[this.currentCategory];
@@ -164,6 +142,9 @@ export default {
           name: "Instructions",
         });
       }
+    },
+    getColor(color) {
+      return `bg-${color} `;
     },
   },
 };
