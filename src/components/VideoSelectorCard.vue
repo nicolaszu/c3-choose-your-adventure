@@ -20,18 +20,46 @@
       />
     </div>
     <div class="py-3 px-3 flex justify-between">
-      <p
-        class="font-bold gray-700 text-left"
-        :class="{ 'text-white': isSelected && category !== 'C3 Kids' }"
-      >
-        {{ title }}
-      </p>
-      <info-icon
-        class="svg-20"
-        :class="[
-          isSelected && category !== 'C3 Kids' ? 'text-white' : 'text-gray-700',
-        ]"
-      />
+      <div class="flex flex-col">
+        <popover :onHover="true" :popoverText="videoMeta.title">
+          <template #trigger>
+            <p
+              class="font-bold gray-700 text-left truncate "
+              :style="{ width: '22ch' }"
+              :class="{ 'text-white': isSelected && category !== 'C3 Kids' }"
+            >
+              {{ videoMeta.title }}
+            </p>
+          </template>
+        </popover>
+        <p
+          class="gray-700 text-left"
+          :class="{ 'text-white': isSelected && category !== 'C3 Kids' }"
+        >
+          {{ videoMeta.author }}
+        </p>
+      </div>
+      <popover v-if="videoMeta.description" :onHover="true">
+        <template #trigger>
+          <info-icon
+            class="svg-20"
+            :class="[
+              isSelected && category !== 'C3 Kids'
+                ? 'text-white'
+                : 'text-gray-700',
+            ]"
+          />
+        </template>
+        <template #popover>
+          <div
+            class="flex flex-col gap-1 text-left w-auto text-white bg-gray-1 shadow-md rounded-lg popover-content p-2"
+          >
+            <p class="font-bold">{{ videoMeta.title }}</p>
+            <p v-if="videoMeta.author">{{ videoMeta.author }}</p>
+            {{ videoMeta.description }}
+          </div>
+        </template>
+      </popover>
     </div>
   </div>
 </template>
@@ -40,11 +68,13 @@
 import { mapGetters, mapMutations, mapState } from "vuex";
 import checkIcon from "@/assets/icons/check.svg?inline";
 import infoIcon from "@/assets/icons/info.svg?inline";
+import Popover from "@/components/Popover";
 
 export default {
   components: {
     checkIcon,
     infoIcon,
+    Popover,
   },
   data() {
     return {
@@ -56,8 +86,8 @@ export default {
       type: String,
       required: true,
     },
-    title: {
-      type: String,
+    videoMeta: {
+      type: Object,
       required: true,
     },
     category: {
@@ -135,7 +165,7 @@ export default {
 
 .image-wrapper {
   padding-bottom: 0%;
-  height: 100px;
+  height: 130px;
   width: auto;
   @apply rounded-t-lg relative bg-white;
   img {

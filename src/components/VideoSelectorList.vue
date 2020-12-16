@@ -7,17 +7,16 @@
     >
       <video-selector-card
         v-for="(video, index) in videos"
-        :key="currentCategory + '' + index"
+        :key="currentCategory.name + '' + index"
         :id="video.id"
-        :title="video.title"
-        :category="currentCategory"
+        :videoMeta="video"
+        :category="currentCategory.name"
       />
     </perfect-scrollbar>
   </div>
 </template>
 
 <script>
-import getVideos from "../videos.js";
 import VideoSelectorCard from "../components/VideoSelectorCard";
 import { mapState } from "vuex";
 
@@ -28,23 +27,20 @@ export default {
 
   props: {
     currentCategory: {
-      type: String,
+      type: Object,
       required: true,
     },
   },
   data() {
     return {
-      videoList: "",
       isAtScrollEnd: false,
     };
   },
-  async created() {
-    this.videoList = await getVideos();
-  },
+
   computed: {
-    ...mapState(["videoPlaylist"]),
+    ...mapState(["videoPlaylist", "videosByCategory"]),
     videos() {
-      return this.videoList[this.currentCategory];
+      return this.videosByCategory[this.currentCategory.name];
     },
   },
   methods: {

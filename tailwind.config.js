@@ -28,7 +28,7 @@ module.exports = {
       textColor: ["disabled"],
       borderStyle: ["disabled"],
       borderOpacity: ["disabled"],
-      animation: ["group-hover"],
+      animation: ["group-hover", "hover"],
     },
   },
 };

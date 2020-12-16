@@ -1,19 +1,3 @@
-<!-- <template>
-  <div class="bg">
-    {{ currentCategory }}
-    <video-selector-list :currentCategory="currentCategory" class="ml-96" />
-    <button @click="navigate">
-      Submit
-    </button>
-    <button @click="backCategory" :disabled="currentCategory === 'Worship'">
-      Back
-    </button>
-    <button @click="nextCategory">
-      Next
-    </button>
-    {{ currentCategory }}
-  </div>
-</template> -->
 <template>
   <div
     class="main-wrapper bg-c3-teal w-full h-full grid justify-center gap-y-8 gap-x-16 content-center relative px-8 "
@@ -62,7 +46,7 @@
         @click="nextCategory"
       >
         <button-arrow class="h-2 w-auto" />
-        Next
+        {{ currentCategory.name === "C3 Kids" ? "Finish" : "Next" }}
       </button>
     </div>
   </div>
@@ -72,7 +56,7 @@
 // import { mapState } from "vuex";
 import VideoSelectorList from "@/components/VideoSelectorList";
 import getVideos from "../videos.js";
-import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 import titleXl from "@/assets/illustrations/adventure-title.svg";
 import circularMessage from "@/assets/illustrations/circular-message.svg";
 import c3Logo from "@/assets/illustrations/c3-logo.svg";
@@ -90,40 +74,32 @@ export default {
   data() {
     return {
       videoList: "",
-      currentCategory: "Worship",
+      currentCategory: {},
     };
   },
   async created() {
     this.videoList = await getVideos();
+    this.currentCategory = this.categories[0];
   },
   computed: {
     ...mapState(["videoPlaylist", "categories"]),
-    ...mapGetters(["arrayCategories"]),
     videos() {
-      return this.videoList[this.currentCategory];
+      return this.videoList[this.currentCategory.name];
     },
   },
 
   methods: {
-    navigate() {
-      this.$router.push({
-        path: "/play",
-        query: {
-          videos: this.videoPlaylist,
-        },
-      });
-    },
     isCurrent(category) {
       console.log(category, this.currentCategory);
-      if (category === this.currentCategory) {
+      if (category === this.currentCategory.name) {
         return true;
       }
       return false;
     },
     nextCategory() {
-      const currentIndex = this.arrayCategories.indexOf(this.currentCategory);
-      if (currentIndex < this.arrayCategories.length - 1) {
-        this.currentCategory = this.arrayCategories[currentIndex + 1];
+      const currentIndex = this.categories.indexOf(this.currentCategory);
+      if (currentIndex < this.categories.length - 1) {
+        this.currentCategory = this.categories[currentIndex + 1];
       } else {
         this.$router.push({
           path: "/play",
@@ -134,9 +110,9 @@ export default {
       }
     },
     backCategory() {
-      const currentIndex = this.arrayCategories.indexOf(this.currentCategory);
+      const currentIndex = this.categories.indexOf(this.currentCategory);
       if (currentIndex > 0) {
-        this.currentCategory = this.arrayCategories[currentIndex - 1];
+        this.currentCategory = this.categories[currentIndex - 1];
       } else {
         this.$router.push({
           name: "Instructions",

@@ -12,21 +12,25 @@ export const defaultState = () => {
         color: "c3-green",
         label: "Select your worship",
         name: "Worship",
+        required: true,
       },
       {
         color: "c3-orange",
         label: "Select your story",
         name: "Our Story",
+        required: false,
       },
       {
         color: "c3-red",
         label: "Select your preach",
         name: "Preach",
+        required: true,
       },
       {
         color: "c3-beige",
         label: "Select your c3 kids episode",
         name: "C3 Kids",
+        required: false,
       },
     ],
     videosByCategory: {
