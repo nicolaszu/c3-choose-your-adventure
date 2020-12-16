@@ -40,7 +40,10 @@
         @click="showPlaylist = !showPlaylist"
       >
         {{ showPlaylist ? "Hide Selection" : "Show Selection" }}
-        <slide-icon class="svg-16" />
+        <slide-icon
+          class="svg-16"
+          :class="{ 'transform rotate-180': !showPlaylist }"
+        />
       </button>
       <p>Total Play Time: <strong>1:53</strong></p>
     </div>
