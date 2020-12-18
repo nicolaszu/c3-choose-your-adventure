@@ -56,6 +56,10 @@ export default {
       type: Number,
       default: 500,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {

@@ -6,7 +6,12 @@ import { getters } from "./getters";
 
 export const defaultState = () => {
   return {
-    videoPlaylist: [],
+    videoPlaylist: {
+      Worship: [],
+      "Our Story": [],
+      Preach: [],
+      "C3 Kids": [],
+    },
     categories: [
       {
         color: "c3-green",

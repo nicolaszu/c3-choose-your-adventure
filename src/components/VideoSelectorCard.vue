@@ -99,7 +99,7 @@ export default {
     ...mapState(["videoPlaylist"]),
     ...mapGetters(["categoryColor"]),
     isSelected() {
-      return this.videoPlaylist.includes(this.id);
+      return this.videoPlaylist[this.category].includes(this.id);
     },
   },
   async created() {
@@ -108,9 +108,9 @@ export default {
   methods: {
     toggleSelect() {
       if (this.isSelected) {
-        this.removeVideo(this.id);
+        this.removeVideo({ category: this.category, id: this.id });
       } else {
-        this.addVideo(this.id);
+        this.addVideo({ category: this.category, id: this.id });
       }
     },
     getSelectedStyling() {

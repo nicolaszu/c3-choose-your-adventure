@@ -19,13 +19,20 @@
           size="6"
           :style="{ gap: '.1rem' }"
         />
-        <p
-          class="text-white font-bold text-4xl font-section uppercase"
+        <div
+          class="text-white font-bold text-4xl font-section uppercase relative"
           :style="{ width: '20ch' }"
           v-if="isCurrent(category.name)"
         >
           {{ category.label }}
-        </p>
+          <p
+            class="text-white text-lg font-sans font-normal absolute capitalize"
+            :style="{ width: '20ch' }"
+            v-if="!category.required"
+          >
+            *optional
+          </p>
+        </div>
       </div>
     </div>
 
@@ -41,13 +48,26 @@
         <button-arrow class="h-2 w-auto transform rotate-180" />
         Back
       </button>
-      <button
-        class="bg-white text-2xl py-2 disabled:text-gray-3 disabled:bg-gray-5"
-        @click="nextCategory"
-      >
-        <button-arrow class="h-2 w-auto" />
-        {{ currentCategory.name === "C3 Kids" ? "Finish" : "Next" }}
-      </button>
+      <popover :onHover="true" :disabled="!isDisabled">
+        <template #trigger>
+          <button
+            class="bg-white text-2xl py-2 disabled:text-gray-3 disabled:bg-gray-5"
+            @click="nextCategory"
+            :disabled="isDisabled"
+          >
+            <button-arrow class="h-2 w-auto" />
+            {{ currentCategory.name === "C3 Kids" ? "Finish" : "Next" }}
+          </button>
+        </template>
+        <template #popover>
+          <div
+            class="flex flex-row gap-2 text-left w-auto text-white bg-gray-1 shadow-md p-3"
+          >
+            <warning-icon class="svg-20" />
+            <p class="font-bold">Select at least one video</p>
+          </div>
+        </template>
+      </popover>
     </div>
   </div>
 </template>
@@ -61,7 +81,11 @@ import titleXl from "@/assets/illustrations/adventure-title.svg";
 import circularMessage from "@/assets/illustrations/circular-message.svg";
 import c3Logo from "@/assets/illustrations/c3-logo.svg";
 import buttonArrow from "@/assets/icons/button-arrow.svg?inline";
+import warningIcon from "@/assets/icons/warning.svg?inline";
+
 import circlesGroup from "@/components/circlesGroup.vue";
+import Popover from "@/components/Popover";
+
 export default {
   components: {
     VideoSelectorList,
@@ -69,7 +93,9 @@ export default {
     circlesGroup,
     circularMessage,
     buttonArrow,
+    warningIcon,
     c3Logo,
+    Popover,
   },
   data() {
     return {
@@ -86,6 +112,12 @@ export default {
     videos() {
       return this.videoList[this.currentCategory.name];
     },
+    isDisabled() {
+      return (
+        this.currentCategory.required &&
+        this.videoPlaylist[this.currentCategory.name].length == 0
+      );
+    },
   },
 
   methods: {
@@ -101,10 +133,12 @@ export default {
       if (currentIndex < this.categories.length - 1) {
         this.currentCategory = this.categories[currentIndex + 1];
       } else {
+        const selectedVideoIds = Object.values(this.videoPlaylist).flat();
+        const allIds = ["HFjLXj0pojg", ...selectedVideoIds];
         this.$router.push({
           path: "/play",
           query: {
-            videos: this.videoPlaylist,
+            videos: allIds,
           },
         });
       }

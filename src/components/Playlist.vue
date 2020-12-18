@@ -2,20 +2,20 @@
   <perfect-scrollbar
     class="max-height flex flex-col  h-0 min-h-full pr-8 gap-2"
   >
-    <div v-for="(video, index) in videos" :key="video.id">
+    <div v-for="(id, index) in videoIds" :key="id" @click="changeVideo(index)">
       <div
         class="grid grid-cols-2 py-4 px-4 gap-4 card-wrapper rounded-lg hover:bg-gray-100 cursor-pointer"
-        :class="{ 'bg-gray-100': isSelected(video.id) }"
+        :class="{ 'bg-gray-100': isSelected(id) }"
       >
         <p>{{ index + 1 }}</p>
         <div class="image-wrapper">
-          <img :src="getThumbnail(video.id)" :alt="video.id" />
+          <img :src="getThumbnail(id)" :alt="id" />
         </div>
 
         <div class="flex flex-col gap-2">
-          <p class="font-bold text-lg  ">{{ video.title }}</p>
-          <p v-if="video.author" class="text-md">
-            {{ video.author }}
+          <p class="font-bold text-lg  ">{{ allVideos[id].title }}</p>
+          <p v-if="allVideos[id].author" class="text-md">
+            {{ allVideos[id].author }}
           </p>
         </div>
         <p
@@ -40,11 +40,6 @@ export default {
       type: String,
     },
   },
-  data() {
-    return {
-      videos: [],
-    };
-  },
   computed: {
     ...mapState(["videoPlaylist"]),
     ...mapGetters(["allVideos"]),
@@ -53,15 +48,13 @@ export default {
     getThumbnail(id) {
       return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
     },
-    getVideoMetaDataList() {
-      return this.allVideos.filter((video) => this.videoIds.includes(video.id));
-    },
+
     isSelected(id) {
       return id === this.selectedId;
     },
-  },
-  created() {
-    this.videos = this.getVideoMetaDataList();
+    changeVideo(index) {
+      this.$emit("videoClicked", index);
+    },
   },
 };
 </script>

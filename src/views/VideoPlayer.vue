@@ -52,6 +52,7 @@
       class="row-start-2 max-w-md"
       :videoIds="urlPlaylist"
       :selectedId="this.urlPlaylist[this.playlistCurrentIndex]"
+      @videoClicked="changeVideo"
     />
     <div
       class="flex justify-between  col-start-2 col-span-1 row-start-3 items-center  bottom-0 my-7 mx-10 w-full "
@@ -60,6 +61,7 @@
         :to="{ name: 'Instructions' }"
         tag="button"
         class="flex text-center py-2 items-center gap-2 group"
+        @click.native="resetPlaylist"
       >
         <refresh-icon class="svg-24 group-hover:animate-spin-slow" />
         Create a New Adventure
@@ -87,7 +89,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import titleXl from "@/assets/illustrations/adventure-title.svg";
 import c3Logo from "@/assets/illustrations/c3-logo.svg";
 import circlesGroup from "@/components/circlesGroup.vue";
@@ -134,7 +136,7 @@ export default {
       console.log(newState);
 
       if (newState.data === 0 && !this.isLastVideo) {
-        this.player.loadVideoById(this.getNextVideo(), 5, "large");
+        this.player.loadVideoById(this.getNextVideo(), 0, "large");
         this.player.playVideo();
       }
     },
@@ -145,15 +147,23 @@ export default {
     getColor(color) {
       return `bg-${color} `;
     },
+    ...mapMutations({ resetPlaylist: "RESET_PLAYLIST" }),
+    changeVideo(newIndex) {
+      if (newIndex === this.playlistCurrentIndex) {
+        return;
+      }
+      this.playlistCurrentIndex = newIndex - 1;
+      this.player.loadVideoById(this.getNextVideo(), 0, "large");
+      this.player.playVideo();
+    },
   },
   computed: {
     ...mapState(["videoPlaylist", "categories"]),
-    ...mapGetters(["playlistLength"]),
     player() {
       return this.$refs.youtube.player;
     },
     isLastVideo() {
-      return this.playlistLength === this.playlistCurrentIndex + 1;
+      return this.urlPlaylist.length === this.playlistCurrentIndex + 1;
     },
   },
 };

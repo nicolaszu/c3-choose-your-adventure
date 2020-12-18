@@ -18,6 +18,17 @@ export const getters = {
   },
   //returns array of objects of all videos rather than divided by categories
   allVideos(state) {
-    return Object.values(state.videosByCategory).flat();
+    const introVideo = {
+      HFjLXj0pojg: {
+        title: "Introduction Video",
+        id: "HFjLXj0pojg",
+      },
+    };
+    const flattenVideos = Object.values(state.videosByCategory).flat();
+    const normalizedMeta = flattenVideos.reduce(
+      (obj, item) => ((obj[item.id] = item), obj),
+      {}
+    );
+    return { ...introVideo, ...normalizedMeta };
   },
 };
