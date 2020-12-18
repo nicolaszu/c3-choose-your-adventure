@@ -6,7 +6,8 @@
   >
     <div
       v-if="isSelected"
-      class="rounded-full bg-c3-orange h-8 w-8 absolute right-0 m-2"
+      class=" z-50 rounded-full  h-8 w-8 absolute right-0 m-2"
+      :class="getSelectedStyling()"
     >
       <check-icon class="fill-current text-white" />
     </div>
