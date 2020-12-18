@@ -8,11 +8,13 @@ import VueSocialSharing from "vue-social-sharing";
 import PerfectScrollbar from "vue2-perfect-scrollbar";
 import "./assets/perfect-scrollbar.scss";
 import VueContentPlaceholders from "vue-content-placeholders";
+import VueClipboard from "vue-clipboard2";
 
 Vue.use(VueContentPlaceholders);
 Vue.use(PerfectScrollbar);
 Vue.use(VueSocialSharing);
 
+Vue.use(VueClipboard);
 Vue.use(VueYoutube);
 Vue.config.productionTip = false;
 

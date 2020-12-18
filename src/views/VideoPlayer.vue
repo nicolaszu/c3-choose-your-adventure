@@ -57,18 +57,17 @@
     <div
       class="flex justify-between  col-start-2 col-span-1 row-start-3 items-center  bottom-0 my-7 mx-10 w-full "
     >
-      <router-link
-        :to="{ name: 'Instructions' }"
-        tag="button"
+      <button
         class="flex text-center py-2 items-center gap-2 group"
-        @click.native="resetPlaylist"
+        @click="showWarningModal = true"
       >
         <refresh-icon class="svg-24 group-hover:animate-spin-slow" />
         Create a New Adventure
-      </router-link>
+      </button>
       <c3-logo class=" height-auto w-28 " />
       <button
         class="flex text-center items-center gap-2 bg-white py-2 items-center"
+        @click="showCopyModal = true"
       >
         Share your Adventure
         <share-icon class="svg-24" />
@@ -85,18 +84,27 @@
     >
       Share on Facebook
     </ShareNetwork> -->
+    <share-link-modal v-if="showCopyModal" @close="showCopyModal = false" />
+    <warning-modal
+      v-if="showWarningModal"
+      @close="showWarningModal = false"
+      @confirm="restartAdventure"
+    />
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import titleXl from "@/assets/illustrations/adventure-title.svg";
-import c3Logo from "@/assets/illustrations/c3-logo.svg";
+
 import circlesGroup from "@/components/circlesGroup.vue";
 import Playlist from "../components/Playlist.vue";
+import ShareLinkModal from "@/components/modals/ShareLinkModal.vue";
+import WarningModal from "@/components/modals/WarningModal.vue";
 import shareIcon from "@/assets/icons/share.svg";
 import refreshIcon from "@/assets/icons/refresh.svg";
 import slideIcon from "@/assets/icons/slide.svg";
+import titleXl from "@/assets/illustrations/adventure-title.svg";
+import c3Logo from "@/assets/illustrations/c3-logo.svg";
 
 export default {
   name: "VideoPlayer",
@@ -108,6 +116,8 @@ export default {
     shareIcon,
     refreshIcon,
     slideIcon,
+    ShareLinkModal,
+    WarningModal,
   },
   data() {
     return {
@@ -115,6 +125,8 @@ export default {
       playlistCurrentIndex: 0,
       urlPlaylist: [],
       showPlaylist: true,
+      showCopyModal: false,
+      showWarningModal: false,
     };
   },
   created() {
@@ -155,6 +167,10 @@ export default {
       this.playlistCurrentIndex = newIndex - 1;
       this.player.loadVideoById(this.getNextVideo(), 0, "large");
       this.player.playVideo();
+    },
+    restartAdventure() {
+      this.resetPlaylist();
+      this.$router.push({ name: "Instructions" });
     },
   },
   computed: {
