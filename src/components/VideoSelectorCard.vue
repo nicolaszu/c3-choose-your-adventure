@@ -7,9 +7,12 @@
     <div
       v-if="isSelected"
       class=" z-50 rounded-full  h-8 w-8 absolute right-0 m-2"
-      :class="getSelectedStyling()"
+      :class="[getSelectedStyling()]"
     >
-      <check-icon class="fill-current text-white" />
+      <check-icon
+        class="fill-current "
+        :class="[category === 'C3 Kids' ? 'text-black' : 'text-white']"
+      />
     </div>
     <div class="image-wrapper" v-if="thumbnail">
       <img :src="thumbnail" alt="video" class="" />
@@ -22,7 +25,7 @@
     </div>
     <div class="py-3 px-3 flex justify-between">
       <div class="flex flex-col">
-        <popover :onHover="true" :popoverText="videoMeta.title">
+        <popover :onHover="false" :popoverText="videoMeta.title" @click.stop="">
           <template #trigger>
             <p
               class="font-bold gray-700 text-left truncate "

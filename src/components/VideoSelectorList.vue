@@ -3,7 +3,7 @@
     <perfect-scrollbar
       @ps-y-reach-end="hideGradient"
       @ps-scroll-up="showGradient"
-      class="max-height grid main-wrapper gap-6 grid-cols-3 pr-8 h-0 min-h-full "
+      class="hidden md:grid main-wrapper gap-6 pr-8 h-0 min-h-full justify-center "
     >
       <video-selector-card
         v-for="(video, index) in videos"
@@ -11,8 +11,21 @@
         :id="video.id"
         :videoMeta="video"
         :category="currentCategory.name"
+        class="col-span-1 row-span-1"
       />
     </perfect-scrollbar>
+    <div
+      class="grid md:hidden main-wrapper gap-6  overflow-y-auto justify-center"
+    >
+      <video-selector-card
+        v-for="(video, index) in videos"
+        :key="currentCategory.name + '' + index"
+        :id="video.id"
+        :videoMeta="video"
+        :category="currentCategory.name"
+        class="col-span-1 row-span-1"
+      />
+    </div>
   </div>
 </template>
 
@@ -62,7 +75,8 @@ export default {
 }
 
 .main-wrapper {
-  grid-template-columns: repeat(3, fit-content(10px));
+  grid-template-columns: repeat(auto-fill, 18rem);
+  grid-auto-rows: fit-content(100px);
 }
 
 .outer-wrapper::after {

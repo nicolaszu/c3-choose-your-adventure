@@ -4,16 +4,19 @@
     :style="{ height: 'fit-content' }"
   >
     <div
+      v-bind="$attrs"
       v-for="index in 4"
       :key="index"
       class="rounded-full "
-      :class="[getSize, color]"
+      :class="[color, customDotClass]"
     />
   </div>
 </template>
 
 <script>
 export default {
+  inheritAttrs: false,
+
   props: {
     color: {
       type: String,
@@ -22,6 +25,10 @@ export default {
     size: {
       type: String,
       default: "8",
+    },
+    customDotClass: {
+      type: String,
+      default: "",
     },
   },
   computed: {

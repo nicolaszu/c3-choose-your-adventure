@@ -1,22 +1,36 @@
 <template>
   <div
-    class="main-wrapper bg-c3-teal w-full h-full grid justify-center gap-16 content-center relative "
+    class="main-wrapper py-6 md:py-0  bg-c3-teal w-full min-h-full grid justify-center gap-4 md:gap-16 content-center relative "
   >
     <title-xl
-      class="title-size col-start-2 col-span-1 row-span-2 row-start-1 justify-self-end self-end "
+      class="w-80 h-auto md:w-auto title-lg col-span-2 row-span-1 row-start-2 md:col-start-2 md:col-span-1 md:row-span-2 md:row-start-1 justify-self-center md:justify-self-end self-end mx-6 md:m-0"
     />
 
     <div
-      class="col-start-3 row-start-1 row-span-2 flex flex-col gap-4 self-center align-center relative w-max "
+      class="col-span-1 row-start-3 row-span-1 md:col-start-3 md:row-start-1 md:row-span-2 flex flex-col gap-2 md:gap-4 justify-self-end md:justify-self-start	md:self-center align-center relative w-max "
     >
-      <circles-group color="bg-c3-green" size="16" />
-      <circles-group color="bg-c3-red" size="16" />
-      <circles-group color="bg-c3-orange" size="16" />
+      <circles-group
+        color="bg-c3-green"
+        customDotClass="h-7 w-7 md:h-12 md:w-12 lg:h-16 lg:w-16 xl:h-16 xl:w-16 2xl:w-16 2xl:w-16"
+      />
+      <circles-group
+        color="bg-c3-red"
+        customDotClass="h-7 w-7 md:h-12 md:w-12 lg:h-16 lg:w-16 xl:h-16 xl:w-16 2xl:w-16 2xl:w-16"
+      />
+      <circles-group
+        color="bg-c3-orange"
+        customDotClass="h-7 w-7 md:h-12 md:w-12 lg:h-16 lg:w-16 xl:h-16 xl:w-16 2xl:w-16 2xl:w-16"
+      />
       <circular-message
-        class="message-size h-auto w-32 absolute ml-28 mt-16 animate-spin-slow"
+        class="md:w-32 hidden md:flex absolute ml-28 mt-16 animate-spin-slow"
       />
     </div>
-    <div class="col-start-2 row-start-3 justify-self-end self-end w-max">
+    <circular-message
+      class="col-span-2 row-start-1 justify-self-center md:hidden h-auto w-24 self-center animate-spin-slow"
+    />
+    <div
+      class="col-span-2 row-start-4 self-center md:col-span-1 md:col-start-2 md:row-start-3 justify-self-center md:justify-self-end md:self-end w-max"
+    >
       <router-link
         :to="{ name: 'Instructions' }"
         tag="button"
@@ -26,13 +40,17 @@
         Start
       </router-link>
     </div>
-    <div class="col-start-3 row-start-3 text-categories w-max ">
+    <div
+      class="col-start-2 row-start-3  md:col-start-3 md:row-start-3 text-white font-bold md:text-3xl uppercase font-section w-max text-2xl"
+    >
       <p>WORSHIP</p>
       <p>Our Stories</p>
       <p>Preach</p>
       <p>Kids</p>
     </div>
-    <c3-logo class="absolute bottom-0 left-0 height-auto w-28 my-7 mx-10" />
+    <c3-logo
+      class="hidden md:flex absolute bottom-0 left-0 height-auto w-28 my-7 mx-10"
+    />
   </div>
 </template>
 
@@ -54,17 +72,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title-size {
-  height: auto;
-  width: 40rem;
-}
-
-.text-categories {
-  @apply text-white font-bold text-3xl uppercase font-section;
+.title-lg {
+  @screen lg {
+    width: 40rem;
+  }
 }
 
 .main-wrapper {
-  grid-template-columns: 0.5fr 1.4fr 1fr 0.5fr;
-  grid-auto-rows: auto auto fit-content(10px);
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto 1fr 1fr auto;
+  @screen md {
+    grid-template-columns: 0.5fr 1.4fr 1fr 0.5fr;
+    grid-auto-rows: auto auto fit-content(10px);
+  }
+}
+
+.circle {
+  @apply h-8 w-8 md:h-12 md:w-12 lg:h-16 lg:w-16 xl:h-16 xl:w-16 2xl:w-16 2xl:w-16;
 }
 </style>
