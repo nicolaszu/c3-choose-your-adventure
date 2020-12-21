@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-lg card h-52  w-72 relative bg-white "
+    class="rounded-lg ring-4 card h-52  w-44 md:w-72 relative bg-white "
     :class="[{ 'border-4 ': isSelected }, getSelectedStyling()]"
     @click="toggleSelect"
   >
@@ -24,26 +24,22 @@
       />
     </div>
     <div class="py-3 px-3 flex justify-between">
-      <div class="flex flex-col">
-        <popover :onHover="false" :popoverText="videoMeta.title" @click.stop="">
-          <template #trigger>
-            <p
-              class="font-bold gray-700 text-left truncate "
-              :style="{ width: '22ch' }"
-              :class="{ 'text-white': isSelected && category !== 'C3 Kids' }"
-            >
-              {{ videoMeta.title }}
-            </p>
-          </template>
-        </popover>
+      <div class="flex flex-col truncate overflow-x-auto">
         <p
-          class="gray-700 text-left"
+          class="font-bold gray-700 text-left truncate text-sm md:text-base "
+          :class="{ 'text-white': isSelected && category !== 'C3 Kids' }"
+        >
+          {{ videoMeta.title }}
+        </p>
+
+        <p
+          class="gray-700 text-left text-sm md:text-base"
           :class="{ 'text-white': isSelected && category !== 'C3 Kids' }"
         >
           {{ videoMeta.author }}
         </p>
       </div>
-      <popover v-if="videoMeta.description" :onHover="true">
+      <popover v-if="videoMeta.description" :onHover="true" @click.stop="">
         <template #trigger>
           <info-icon
             class="svg-20"
@@ -143,7 +139,6 @@ export default {
           }
         };
         img.onerror = () => {
-          console.log("error");
           reject;
         };
         img.src = `https://img.youtube.com/vi/${this.id}/maxresdefault.jpg`;
@@ -160,11 +155,8 @@ export default {
 
   // box-shadow: 0px 16px 24px 0px rgba(255, 85, 44, 0.13);
 
-  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04);
-
-  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.04);
-
-  box-shadow: 0px 16px 24px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04),
+    0px 2px 6px 0px rgba(0, 0, 0, 0.04), 0px 16px 24px 0px rgba(0, 0, 0, 0.06);
 }
 
 .image-wrapper {
@@ -174,6 +166,9 @@ export default {
   @apply rounded-t-lg relative bg-white;
   img {
     @apply absolute top-0 left-0 w-full h-full object-cover rounded-t-lg;
+  }
+  @screen md {
+    height: 130px;
   }
 }
 </style>

@@ -22,12 +22,17 @@
               Do you wish to continue
             </p>
           </div>
-          <div class="flex gap-2 justify-center pb-12">
+          <div class="flex md:flex-row gap-2 justify-center pb-12">
             <button
               class="flex text-center items-center gap-2 py-2 items-center"
               @click="$emit('close')"
             >
-              <button-arrow class="h-2 w-auto transform rotate-180 " />
+              <button-arrow
+                class="hidden md:flex h-2 w-auto transform rotate-180 "
+              />
+              <button-arrow-sm
+                class="md:hidden h-2 w-auto transform rotate-180 "
+              />
 
               Cancel
             </button>
@@ -35,7 +40,8 @@
               class="flex text-center items-center gap-2 bg-c3-orange text-white py-2 items-center"
               @click="$emit('confirm')"
             >
-              <button-arrow class="h-2 w-auto " />
+              <button-arrow class="hidden md:flex h-2 w-auto " />
+              <button-arrow-sm class="md:hidden h-2 w-auto " />
 
               Continue
             </button>
@@ -49,11 +55,13 @@
 <script>
 import closeIcon from "@/assets/icons/close.svg?inline";
 import buttonArrow from "@/assets/icons/button-arrow.svg?inline";
+import buttonArrowSm from "@/assets/icons/button-arrow-sm.svg?inline";
 
 export default {
   components: {
     closeIcon,
     buttonArrow,
+    buttonArrowSm,
   },
   data() {
     return {
@@ -67,7 +75,6 @@ export default {
   },
   methods: {
     onCopy() {
-      console.log("hello");
       this.isCopied = true;
     },
   },
@@ -76,8 +83,11 @@ export default {
 
 <style lang="scss" scoped>
 .modal-container {
-  min-width: 450px;
-  width: 500px;
+  width: 95vw;
+  @screen md {
+    min-width: 450px;
+    width: 500px;
+  }
 }
 
 .modal-enter {

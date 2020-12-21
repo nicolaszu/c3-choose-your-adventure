@@ -1,9 +1,9 @@
 <template>
   <div
-    class="main-wrapper py-6 md:py-0  bg-c3-teal w-full min-h-full grid justify-center gap-4 md:gap-16 content-center relative "
+    class="main-wrapper py-6 md:py-4  bg-c3-teal w-full min-h-full grid justify-center gap-8 md:gap-16 content-center relative "
   >
     <title-xl
-      class="w-80 h-auto md:w-auto title-lg col-span-2 row-span-1 row-start-2 md:col-start-2 md:col-span-1 md:row-span-2 md:row-start-1 justify-self-center md:justify-self-end self-end mx-6 md:m-0"
+      class="w-80 h-auto md:w-auto  col-span-2 row-span-1 row-start-2 md:col-start-2 md:col-span-1 md:row-span-2 md:row-start-1 justify-self-center md:justify-self-end self-center md:self-end  mx-6 md:m-0"
     />
 
     <div
@@ -11,25 +11,25 @@
     >
       <circles-group
         color="bg-c3-green"
-        customDotClass="h-7 w-7 md:h-12 md:w-12 lg:h-16 lg:w-16 xl:h-16 xl:w-16 2xl:w-16 2xl:w-16"
+        customDotClass="h-7 w-7 md:h-9 md:w-9 lg:h-16 lg:w-16"
       />
       <circles-group
         color="bg-c3-red"
-        customDotClass="h-7 w-7 md:h-12 md:w-12 lg:h-16 lg:w-16 xl:h-16 xl:w-16 2xl:w-16 2xl:w-16"
+        customDotClass="h-7 w-7 md:h-9 md:w-9 lg:h-16 lg:w-16"
       />
       <circles-group
         color="bg-c3-orange"
-        customDotClass="h-7 w-7 md:h-12 md:w-12 lg:h-16 lg:w-16 xl:h-16 xl:w-16 2xl:w-16 2xl:w-16"
+        customDotClass="h-7 w-7 md:h-9 md:w-9 lg:h-16 lg:w-16"
       />
       <circular-message
-        class="md:w-32 hidden md:flex absolute ml-28 mt-16 animate-spin-slow"
+        class="md:w-24 lg:w-32 hidden md:flex absolute md:ml-16 lg:ml-28 mt-16 animate-spin-slow"
       />
     </div>
     <circular-message
       class="col-span-2 row-start-1 justify-self-center md:hidden h-auto w-24 self-center animate-spin-slow"
     />
     <div
-      class="col-span-2 row-start-4 self-center md:col-span-1 md:col-start-2 md:row-start-3 justify-self-center md:justify-self-end md:self-end w-max"
+      class="col-span-2 row-start-4 self-center md:col-span-2 md:col-start-2 lg:col-span-1 lg:col-start-2 lg:row-start-3 justify-self-center lg:justify-self-end lg:self-end w-max"
     >
       <router-link
         :to="{ name: 'Instructions' }"
@@ -82,12 +82,12 @@ export default {
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: auto 1fr 1fr auto;
   @screen md {
+    grid-template-columns: 16px 1.4fr 1fr 16px;
+    grid-auto-rows: auto auto fit-content(10px) auto;
+  }
+  @screen lg {
     grid-template-columns: 0.5fr 1.4fr 1fr 0.5fr;
     grid-auto-rows: auto auto fit-content(10px);
   }
-}
-
-.circle {
-  @apply h-8 w-8 md:h-12 md:w-12 lg:h-16 lg:w-16 xl:h-16 xl:w-16 2xl:w-16 2xl:w-16;
 }
 </style>

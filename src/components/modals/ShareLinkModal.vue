@@ -15,7 +15,7 @@
           <div
             class="px-12 flex flex-col items-center text-center gap-6 pb-16 pt-20"
           >
-            <div class="flex gap-3">
+            <div class="flex flex-col md:flex-row gap-3">
               <input
                 type="text"
                 :value="currentURL"
@@ -27,7 +27,7 @@
                 ref="inputCopy"
               />
               <button
-                class="bg-c3-green  text-white"
+                class="bg-c3-green justify-center md:justify-start py-1 md:py-0 text-white"
                 v-clipboard:copy="currentURL"
                 v-clipboard:success="onCopy"
               >
@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     onCopy() {
-      console.log("hello");
       this.isCopied = true;
     },
   },
@@ -69,8 +68,11 @@ export default {
 
 <style lang="scss" scoped>
 .modal-container {
-  min-width: 450px;
-  width: 500px;
+  width: 95vw;
+  @screen md {
+    min-width: 450px;
+    width: 500px;
+  }
 }
 
 .modal-enter {

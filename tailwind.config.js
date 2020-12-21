@@ -15,7 +15,20 @@ module.exports = {
       },
       animation: {
         "spin-slow": "spin 12s linear infinite",
+        "flip-horizontal-bottom":
+          "flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955)   both",
       },
+      keyframes: {
+        "flip-horizontal-bottom": {
+          "0%": {
+            transform: "rotateX(0)",
+          },
+          to: {
+            transform: "rotateX(-180deg)",
+          },
+        },
+      },
+
       fontFamily: {
         sans: ["Aeonik", ...defaultTheme.fontFamily.sans],
         section: ["Solex", ...defaultTheme.fontFamily.sans],
@@ -28,7 +41,7 @@ module.exports = {
       textColor: ["disabled"],
       borderStyle: ["disabled"],
       borderOpacity: ["disabled"],
-      animation: ["group-hover", "hover"],
+      animation: ["group-hover", "hover", "active", "focus"],
     },
   },
 };

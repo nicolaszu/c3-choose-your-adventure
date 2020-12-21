@@ -1,7 +1,7 @@
 <template>
-  <div id="app" class="md:p-5">
-    <c3-header class="hidden md:flex" />
-    <mobile-c3-header class="flex md:hidden" />
+  <div id="app" class="lg:p-5">
+    <c3-header class="hidden lg:flex" />
+    <mobile-c3-header class="flex lg:hidden" />
     <router-view />
   </div>
 </template>

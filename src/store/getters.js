@@ -12,7 +12,6 @@ export const getters = {
       const selectedCategory = state.categories.filter(
         (category) => currentCategory === category.name
       );
-      console.log(selectedCategory);
       return selectedCategory[0].color;
     };
   },

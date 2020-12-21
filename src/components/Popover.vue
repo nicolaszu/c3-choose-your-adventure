@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click.stop="">
     <div
       ref="trigger"
       @mouseover="onHover && !disabled ? startTimer() : ''"

@@ -19,13 +19,11 @@ export default {
   mounted() {
     this.player.addEventListener("onStateChange", this.onytplayerStateChange);
     const cjs = new Castjs();
-    console.log(cjs);
     // Wait for user interaction
     document.getElementById("cast").addEventListener("click", function() {
       // Check if casting is available
       if (cjs.available) {
         // Initiate new cast session
-        console.log("new casting aviable");
         cjs.cast(`https://www.youtube.com/watch?v=${this.videoId}`);
         cjs.play();
       }
@@ -39,8 +37,6 @@ export default {
       console.log("/ we are watching!!!");
     },
     onytplayerStateChange(newState) {
-      console.log(newState);
-
       if (newState.data === 0) {
         this.player.loadVideoById("bHQqvYy5KYo", 5, "large");
         this.player.playVideo();
