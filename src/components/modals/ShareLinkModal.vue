@@ -13,14 +13,14 @@
           </button>
 
           <div
-            class="px-12 flex flex-col items-center text-center gap-6 pb-16 pt-20"
+            class="px-12 flex flex-col items-center text-center  pb-16 pt-20"
           >
-            <div class="flex flex-col md:flex-row gap-3">
+            <div class="flex flex-col md:flex-row pb-6">
               <input
                 type="text"
                 :value="currentURL"
                 disabled
-                class="border border-c3-teal p-2 "
+                class="border border-c3-teal p-2 mr-2 "
                 :class="{
                   'outline-none ring-2 ring-c3-green border-transparent': isCopied,
                 }"

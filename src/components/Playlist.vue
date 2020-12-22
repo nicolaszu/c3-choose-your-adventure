@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-height flex flex-col  xl:h-0 xl:min-h-full xl:pr-8 gap-2 overflow-hidden xl:overflow-auto"
+    class="max-height flex flex-col  md:h-0 md:min-h-full md:pr-8 gap-2 overflow-hidden md:overflow-auto"
   >
     <div
       v-for="(id, index) in videoIds"
@@ -18,14 +18,14 @@
         <p class="font-bold  xl:text-lg truncate overflow-ellipsis ">
           {{ allVideos[id].title }}
         </p>
-        <p v-if="allVideos[id].author" class="text-lg">
+        <p v-if="allVideos[id].author" class="text-lg truncate">
           {{ allVideos[id].author }}
         </p>
       </div>
       <p
         class="text-white bg-gray-1 px-3 xl:py-1 rounded h-min font-bold text-xs"
       >
-        1:23
+        {{ allVideos[id].time }}
       </p>
     </div>
   </div>

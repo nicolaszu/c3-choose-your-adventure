@@ -18,9 +18,10 @@ export const getters = {
   //returns array of objects of all videos rather than divided by categories
   allVideos(state) {
     const introVideo = {
-      HFjLXj0pojg: {
+      xZF4MxFzKlc: {
         title: "Introduction Video",
-        id: "HFjLXj0pojg",
+        id: "xZF4MxFzKlc",
+        time: "1:52",
       },
     };
     const flattenVideos = Object.values(state.videosByCategory).flat();

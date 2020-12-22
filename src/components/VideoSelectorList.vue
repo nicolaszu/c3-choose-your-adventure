@@ -78,12 +78,9 @@ export default {
   grid-auto-rows: fit-content(100px);
   grid-template-columns: repeat(auto-fill, 11rem);
 
-
-
   @screen md {
     grid-template-columns: repeat(auto-fill, 18rem);
   }
-
 
   @screen lg {
     grid-template-columns: repeat(auto-fill, 14rem);
@@ -92,7 +89,6 @@ export default {
   @screen xl {
     grid-template-columns: repeat(auto-fill, 18rem);
   }
-  
 }
 
 // .outer-wrapper::after {

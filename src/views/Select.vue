@@ -3,16 +3,14 @@
     class="main-wrapper py-8 md:px-4 lg:py-0 lg:px-8 px-1 bg-c3-teal w-full min-h-full grid justify-center gap-y-8 gap-x-4 lg:gap-y-8 lg:gap-x-4 content-center relative  "
   >
     <div
-      class=" lg:flex lg:gap-4 px-4 lg:px-0 row-start-1 col-start-1 lg:col-start-2 col-span-1  lg:row-start-2  lg:justify-self-end"
+      class=" lg:flex lg:gap-4 px-4 lg:px-0 row-start-1 col-start-1 lg:col-start-2 col-span-1  lg:row-start-2  justify-self-end"
     >
-      <title-xl class="h-52 w-40ƒ md:w-64  xl:w-96 self-start" />
+      <title-xl class="h-auto w-32 md:w-64  xl:w-96 self-start" />
       <circular-message
         class="hidden lg:flex h-20 w-20 self-start animate-spin-slow"
       />
     </div>
-    <div
-      class="flex lg:hidden row-start-1 col-start-2 col-span-1 items-center"
-    >
+    <div class="flex lg:hidden row-start-1 col-start-2 col-span-1 items-center">
       <circles-group
         :color="getColor(currentCategory.color)"
         customDotClass="h-7 w-7 "
@@ -81,7 +79,9 @@
           <button-arrow
             class="hidden md:flex h-2 w-auto transform rotate-180 pl-2"
           />
-          <button-arrow-sm class="md:hidden h-2 w-auto transform rotate-180 pl-2 " />
+          <button-arrow-sm
+            class="md:hidden h-2 w-auto transform rotate-180 pl-2 "
+          />
           Back
         </button>
         <button
@@ -183,7 +183,7 @@ export default {
         window.scrollTo(0, 0);
       } else {
         const selectedVideoIds = Object.values(this.videoPlaylist).flat();
-        const allIds = ["HFjLXj0pojg", ...selectedVideoIds];
+        const allIds = ["xZF4MxFzKlc", ...selectedVideoIds];
         this.$router.push({
           path: "/play",
           query: {
