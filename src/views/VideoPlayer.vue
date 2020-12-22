@@ -1,11 +1,11 @@
 <template>
   <div
-    class="main-wrapper bg-c3-teal w-full min-h-full grid justify-center gap-y-8 lg:gap-y-2 lg:gap-x-16 content-center relative pb-6 lg:pb-0 lg:px-16 "
+    class="main-wrapper bg-c3-teal w-full min-h-full grid justify-center gap-y-8 xl:gap-y-2 xl:gap-x-16 content-center relative pb-6 xl:pb-0 xl:px-16 "
   >
     <div
-      class="flex flex-row gap-4 md:flex-col lg:gap-16 self-center md:self-start lg:self-center justify-center md:justify-self-center lg:justify-start row-start-2 col-start-2 md:row-start-3 lg:col-span-1 lg:col-start-1 lg:row-start-2"
+      class="flex flex-row gap-4 md:flex-col xl:gap-16 self-center md:self-start xl:self-center justify-center md:justify-self-center xl:justify-start row-start-2 col-start-2 md:row-start-3 xl:col-span-1 xl:col-start-1 xl:row-start-2"
     >
-      <title-xl class="h-auto w-36 md:w-64 lg:w-48 self-start" />
+      <title-xl class="h-auto w-36 md:w-64 xl:w-48 self-start" />
       <div class="flex gap-2">
         <div
           v-for="(category, index) in categories"
@@ -15,7 +15,7 @@
           <circles-group
             v-if="index < 3"
             :color="getColor(category.color)"
-            customDotClass="h-5 w-5 lg:h-6 lg:w-6"
+            customDotClass="h-5 w-5 xl:h-6 xl:w-6"
             size="6"
             :style="{ gap: '.1rem' }"
           />
@@ -23,8 +23,7 @@
       </div>
     </div>
     <div
-      class="sticky  z-50 lg:z-0 w-full h-0 row-start-1 col-start-1 col-span-full lg:col-span-1 lg:col-start-2 lg:row-start-2 "
-      :style="{ 'padding-bottom': '56.25%', top: '4rem' }"
+      class="sticky youtube-class top-0 pb md:static  z-50 xl:z-0 w-full md:w-auto h-0 row-start-1 col-start-1 col-span-full md:col-span-2 md:col-start-2 md:row-start-2 xl:col-span-1 xl:col-start-2 xl:row-start-2 "
     >
       <youtube
         class="absolute top-0 left-0 w-full h-full"
@@ -34,8 +33,8 @@
       ></youtube>
     </div>
     <div
-      class="hidden lg:flex justify-between items-center pb-2 lg:row-start-1  lg:col-start-3 lg:col-span-1"
-      :class="{ 'flex-col lg:row-start-2 self-center': !showPlaylist }"
+      class="hidden xl:flex justify-between items-center pb-2 xl:row-start-1  xl:col-start-3 xl:col-span-1"
+      :class="{ 'flex-col xl:row-start-2 self-center': !showPlaylist }"
     >
       <button
         class="flex text-center items-center gap-2 group"
@@ -52,28 +51,28 @@
 
     <playlist
       v-if="showPlaylist || isMobile"
-      class="row-start-4 col-start-2 md:col-start-3 md:row-start-3 lg:col-start-3 lg:row-start-2 lg:max-w-lg"
+      class="row-start-4 col-start-2 md:col-start-3 md:row-start-3 xl:col-start-3 xl:row-start-2 xl:max-w-lg"
       :videoIds="urlPlaylist"
       :selectedId="this.urlPlaylist[this.playlistCurrentIndex]"
       @videoClicked="changeVideo"
     />
     <footer
-      class="flex flex-wrap-reverse gap-2 md:row-start-2 md:col-start-2 md:col-span-2 lg:gap-8 lg:flex-row justify-center row-start-3 col-start-2  lg:col-start-1 lg:col-span-full lg:row-start-3 items-center  bottom-0 lg:my-7  w-full "
+      class="flex flex-wrap-reverse md:row-start-2 md:col-start-2 md:col-span-2  xl:flex-row justify-center row-start-3 col-start-2  xl:col-start-1 xl:col-span-full xl:row-start-3 items-center  bottom-0 xl:my-7  w-full "
     >
       <button
-        class="flex text-center py-2 items-center gap-2 group text-sm lg:text-base"
+        class="flex text-center py-2 mr-8 items-center group text-sm xl:text-base"
         @click="showWarningModal = true"
       >
-        <refresh-icon class="svg-20 lg:svg-24 group-hover:animate-spin-slow" />
+        <refresh-icon class="svg-20 xl:svg-24 mr-2 group-hover:animate-spin-slow" />
         Create a New Adventure
       </button>
-      <c3-logo class="hidden lg:flex height-auto w-28 " />
+      <c3-logo class="hidden xl:flex h-14 w-28 mr-8" />
       <button
-        class="flex text-center items-center gap-2 bg-white py-2 items-center text-sm lg:text-base"
+        class="flex text-center items-center gap-2 bg-white py-2 items-center text-sm xl:text-base"
         @click="showCopyModal = true"
       >
         Share your Adventure
-        <share-icon class="svg-20 lg:svg-24" />
+        <share-icon class="svg-20 xl:svg-24" />
       </button>
     </footer>
     <!-- <button id="cast">hello</button> -->
@@ -193,7 +192,7 @@ export default {
       return this.urlPlaylist.length === this.playlistCurrentIndex + 1;
     },
     isMobile() {
-      return this.windowWidth <= parseInt(fullConfig.theme.screens.lg);
+      return this.windowWidth <= parseInt(fullConfig.theme.screens.xl);
     },
   },
 };
@@ -203,18 +202,27 @@ export default {
   grid-template-columns: 10px 1fr 10px;
   grid-template-rows: auto auto auto 1fr;
   @screen md {
-    grid-template-columns: 10px 1fr 1fr 10px;
+    grid-template-columns: 3.5rem 1fr 1fr 3.5rem;
     grid-template-rows: auto auto 1fr;
   }
-  @screen lg {
+  @screen xl {
     grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto 1fr auto;
   }
 }
 
 ::v-deep iframe {
   @screen lg {
     @apply rounded-lg;
+  }
+}
+
+.youtube-class{
+  padding-bottom:56.25%;
+  top: 4rem;
+  @screen md{
+    top:0;
+    padding-bottom:0;
   }
 }
 </style>

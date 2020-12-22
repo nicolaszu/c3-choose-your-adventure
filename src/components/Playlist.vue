@@ -1,12 +1,12 @@
 <template>
   <div
-    class="max-height flex flex-col  md:h-0 md:min-h-full md:pr-8 gap-2 overflow-hidden md:overflow-auto"
+    class="max-height flex flex-col  xl:h-0 xl:min-h-full xl:pr-8 gap-2 overflow-hidden xl:overflow-auto"
   >
     <div
       v-for="(id, index) in videoIds"
       :key="id"
       @click="changeVideo(index)"
-      class="grid grid-cols-2 py-4 px-3 lg:p-4 gap-2 lg:gap-4 card-wrapper rounded-lg hover:bg-gray-100 cursor-pointer"
+      class="grid grid-cols-2 py-4 px-3 xl:p-4 gap-2 xl:gap-4 card-wrapper rounded-xl hover:bg-gray-100 cursor-pointer"
       :class="{ 'bg-gray-100': isSelected(id) }"
     >
       <p>{{ index + 1 }}</p>
@@ -14,8 +14,8 @@
         <img :src="getThumbnail(id)" :alt="id" />
       </div>
 
-      <div class="flex flex-col lg:gap-2 overflow-x-auto">
-        <p class="font-bold  lg:text-lg truncate overflow-ellipsis ">
+      <div class="flex flex-col xl:gap-2 overflow-x-auto overflow-y-hidden">
+        <p class="font-bold  xl:text-lg truncate overflow-ellipsis ">
           {{ allVideos[id].title }}
         </p>
         <p v-if="allVideos[id].author" class="text-lg">
@@ -23,7 +23,7 @@
         </p>
       </div>
       <p
-        class="text-white bg-gray-1 px-3 lg:py-1 rounded h-min font-bold text-xs"
+        class="text-white bg-gray-1 px-3 xl:py-1 rounded h-min font-bold text-xs"
       >
         1:23
       </p>
@@ -83,7 +83,7 @@ img {
   img {
     @apply absolute top-0 left-0 w-full h-full object-cover rounded-lg;
   }
-  @screen lg {
+  @screen xl {
     @apply w-36	h-20;
   }
 }

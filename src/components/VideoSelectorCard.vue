@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-lg ring-4 card h-52  w-44 md:w-72 relative bg-white "
+    class="rounded-lg ring-4 card h-52  w-44 md:w-72 lg:w-56 xl:w-72 relative bg-white "
     :class="[{ 'border-4 ': isSelected }, getSelectedStyling()]"
     @click="toggleSelect"
   >

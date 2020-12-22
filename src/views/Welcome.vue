@@ -1,13 +1,13 @@
 <template>
   <div
-    class="main-wrapper py-6 md:py-4  bg-c3-teal w-full min-h-full grid justify-center gap-8 md:gap-16 content-center relative "
+    class="main-wrapper py-12 md:py-4  bg-c3-teal w-full min-h-full grid justify-center gap-y-12 gap-x-8 md:gap-16 content-center relative "
   >
     <title-xl
-      class="w-80 h-auto md:w-auto  col-span-2 row-span-1 row-start-2 md:col-start-2 md:col-span-1 md:row-span-2 md:row-start-1 justify-self-center md:justify-self-end self-center md:self-end  mx-6 md:m-0"
+      class="w-80 h-auto title-width  col-span-2 row-span-1 row-start-2 md:col-start-2 md:col-span-1 md:row-span-2 md:row-start-1 justify-self-center md:justify-self-end self-center md:self-end  mx-6 md:m-0"
     />
 
     <div
-      class="col-span-1 row-start-3 row-span-1 md:col-start-3 md:row-start-1 md:row-span-2 flex flex-col gap-2 md:gap-4 justify-self-end md:justify-self-start	md:self-center align-center relative w-max "
+      class="col-span-1 row-start-3 row-span-1 md:col-start-3 md:row-start-1 md:row-span-2 grid  gap-2 md:gap-4 justify-self-end md:justify-self-start	md:self-center align-center relative w-max "
     >
       <circles-group
         color="bg-c3-green"
@@ -34,9 +34,9 @@
       <router-link
         :to="{ name: 'Instructions' }"
         tag="button"
-        class="bg-white text-2xl py-2"
+        class="bg-white text-2xl py-2 "
       >
-        <button-arrow class="h-2 w-auto" />
+        <button-arrow class="h-2 w-auto mr-2"  />
         Start
       </router-link>
     </div>
@@ -75,6 +75,16 @@ export default {
 .title-lg {
   @screen lg {
     width: 40rem;
+  }
+}
+
+.title-width {
+  @apply w-80;
+  @screen md {
+    @apply w-96;
+  }
+  @screen lg {
+    width:32rem
   }
 }
 
