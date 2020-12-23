@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 button {
-  @apply transition ease-in-out duration-150 px-4 font-bold flex flex-row  leading-8 items-center gap-2;
+  @apply transition ease-in-out duration-150 px-4 font-bold flex flex-row leading-8 items-center;
 }
 .svg-16 {
   width: 16px;

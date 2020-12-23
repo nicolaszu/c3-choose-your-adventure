@@ -17,7 +17,7 @@
         </a>
         <a href="//www.c3toronto.com/giving">
           <button
-            class="bg-c3-orange  text-white transform -rotate-2 text-sm py-1 "
+            class="bg-c3-orange  text-white text-sm py-1 "
           >
             Give
           </button>
@@ -33,14 +33,14 @@
         v-show="!isCollapsed"
       >
         <p class="pb-2">Connect with us</p>
-        <div class=" flex text-center items-center gap-4 justify-center ">
-          <a href="//www.facebook.com/C3ChurchToronto/ ">
+        <div class=" flex text-center items-center justify-center ">
+          <a href="//www.facebook.com/C3ChurchToronto/" class="p-2">
             <facebookIcon class="svg-20" />
           </a>
-          <a href="//www.instagram.com/c3toronto">
+          <a href="//www.instagram.com/c3toronto" class="p-2">
             <instagramIcon class="svg-20" />
           </a>
-          <a href="//www.youtube.com/c3toronto">
+          <a href="//www.youtube.com/c3toronto" class="p-2">
             <youtubeIcon class="svg-20" />
           </a>
         </div>

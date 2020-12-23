@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-lg ring-4 card h-52  w-44 md:w-72 relative bg-white "
+    class="rounded-lg ring-4 card h-52  w-44 md:w-72 lg:w-56 xl:w-72 relative bg-white "
     :class="[{ 'border-4 ': isSelected }, getSelectedStyling()]"
     @click="toggleSelect"
   >
@@ -14,8 +14,11 @@
         :class="[category === 'C3 Kids' ? 'text-black' : 'text-white']"
       />
     </div>
-    <div class="image-wrapper" v-if="thumbnail">
+    <div class="image-wrapper relative" v-if="thumbnail">
       <img :src="thumbnail" alt="video" class="" />
+      <p class="absolute bottom-0 right-0 m-2 bg-gray-1 px-3 rounded-md text-white font-bold text-sm">
+        {{ videoMeta.time }}
+      </p>
     </div>
     <div v-else class="image-wrapper" :rounded="true">
       <div

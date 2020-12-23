@@ -3,23 +3,21 @@
     class="main-wrapper py-8 md:px-4 lg:py-0 lg:px-8 px-1 bg-c3-teal w-full min-h-full grid justify-center gap-y-8 gap-x-4 lg:gap-y-8 lg:gap-x-4 content-center relative  "
   >
     <div
-      class=" lg:flex lg:gap-4 px-4 lg:px-0 row-start-1 col-start-1 lg:col-start-2 col-span-1  lg:row-start-2  lg:justify-self-end"
+      class=" lg:flex lg:gap-4 px-4 lg:px-0 row-start-1 col-start-1 lg:col-start-2 col-span-1  lg:row-start-2  justify-self-end"
     >
-      <title-xl class="h-auto w-auto md:w-64 lg:w-96 self-start" />
+      <title-xl class="h-auto w-32 md:w-64  xl:w-96 self-start" />
       <circular-message
-        class="hidden lg:flex h-auto w-20 self-start animate-spin-slow"
+        class="hidden lg:flex h-20 w-20 self-start animate-spin-slow"
       />
     </div>
-    <div
-      class="flex lg:hidden row-start-1 col-start-2 col-span-1 items-center gap-4"
-    >
+    <div class="flex lg:hidden row-start-1 col-start-2 col-span-1 items-center">
       <circles-group
         :color="getColor(currentCategory.color)"
         customDotClass="h-7 w-7 "
         :style="{ gap: '.1rem' }"
       />
       <div
-        class="text-white font-bold text-2xl font-section uppercase relative"
+        class="text-white font-bold text-2xl font-section uppercase relative  pl-2"
         :style="{ width: '13ch' }"
         v-if="isCurrent(currentCategory.name)"
       >
@@ -33,12 +31,12 @@
       </div>
     </div>
     <div
-      class="hidden lg:flex lg:row-start-3 lg:col-start-2  lg:flex-col gap-2 items-start justify-self-end"
+      class="hidden lg:flex lg:row-start-3 lg:col-start-2  lg:flex-col  items-start justify-self-end"
     >
       <div
         v-for="(category, index) in categories"
         :key="index"
-        class="flex gap-4 "
+        class="flex pb-3"
         :class="[index === 3 ? 'items-start' : 'items-center']"
       >
         <circles-group
@@ -47,7 +45,7 @@
           :style="{ gap: '.1rem' }"
         />
         <div
-          class="text-white font-bold text-4xl font-section uppercase relative"
+          class="text-white font-bold lg:text-2xl xl:text-4xl font-section uppercase relative pl-2"
           :style="{ width: '20ch' }"
           v-if="isCurrent(category.name)"
         >
@@ -71,7 +69,7 @@
     <footer
       class="relative flex justify-center row-start-3 col-span-2 lg:justify-between  lg:row-start-5 lg:col-start-1 lg:col-span-full  lg:py-7 "
     >
-      <c3-logo class="hidden lg:flex height-auto w-28 " />
+      <c3-logo class="hidden lg:flex h-14  w-28 " />
 
       <div class=" flex gap-8 items-center">
         <button
@@ -79,9 +77,11 @@
           @click="backCategory"
         >
           <button-arrow
-            class="hidden lg:flex h-2 w-auto transform rotate-180"
+            class="hidden md:flex h-2 w-auto transform rotate-180 pl-2"
           />
-          <button-arrow-sm class="lg:hidden h-2 w-auto transform rotate-180 " />
+          <button-arrow-sm
+            class="md:hidden h-2 w-auto transform rotate-180 pl-2 "
+          />
           Back
         </button>
         <button
@@ -89,17 +89,17 @@
           @click="nextCategory"
           :class="{ 'text-gray-3 bg-gray-5': isDisabled }"
         >
-          <button-arrow class="hidden lg:flex h-2 w-auto" />
           {{ currentCategory.name === "C3 Kids" ? "Finish" : "Next" }}
-          <button-arrow-sm class="  lg:hidden h-2 w-auto " />
+          <button-arrow class="hidden md:flex h-2 w-auto pl-2" />
+          <button-arrow-sm class="  md:hidden h-2 w-auto pl-2" />
         </button>
         <transition name="slide-fade">
           <div
             v-if="showWarning"
-            class="absolute -mt-12 lg:-mt-8 top-0 right-0  flex flex-row gap-1 lg:gap-2 text-left w-auto text-white bg-gray-1 shadow-lg p-3"
+            class="absolute items-center -mt-12 md:-mt-8 top-0 right-0  flex flex-row text-left w-auto h-8 md:h-12 text-white bg-gray-1 shadow-lg p-3"
           >
-            <warning-icon class=" h-auto lg:w-5 w-4" />
-            <p class="font-bold text-xs lg:text-base">
+            <warning-icon class=" h-auto md:w-6 w-4 pr-1 md:pr-2" />
+            <p class="font-bold text-xs md:text-base">
               Select at least one video
             </p>
           </div>
@@ -183,7 +183,7 @@ export default {
         window.scrollTo(0, 0);
       } else {
         const selectedVideoIds = Object.values(this.videoPlaylist).flat();
-        const allIds = ["HFjLXj0pojg", ...selectedVideoIds];
+        const allIds = ["xZF4MxFzKlc", ...selectedVideoIds];
         this.$router.push({
           path: "/play",
           query: {

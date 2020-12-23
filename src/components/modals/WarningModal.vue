@@ -13,35 +13,35 @@
           </button>
 
           <div
-            class="px-12 flex flex-col items-center text-center gap-6 pb-12 pt-20"
+            class="px-12 flex flex-col items-center text-center  pb-12 pt-20"
           >
-            <p class="font-bold text-lg">
+            <p class="font-bold text-lg pb-6">
               Your current video selections will be lost
             </p>
             <p class="font-bold text-lg">
               Do you wish to continue
             </p>
           </div>
-          <div class="flex md:flex-row gap-2 justify-center pb-12">
+          <div class="flex md:flex-row  justify-center pb-12">
             <button
-              class="flex text-center items-center gap-2 py-2 items-center"
+              class="flex text-center items-center  py-2 items-center mr-2"
               @click="$emit('close')"
             >
               <button-arrow
-                class="hidden md:flex h-2 w-auto transform rotate-180 "
+                class="hidden md:flex h-2 w-auto transform rotate-180 mr-2 "
               />
               <button-arrow-sm
-                class="md:hidden h-2 w-auto transform rotate-180 "
+                class="md:hidden h-2 w-auto transform rotate-180 mr-2 "
               />
 
               Cancel
             </button>
             <button
-              class="flex text-center items-center gap-2 bg-c3-orange text-white py-2 items-center"
+              class="flex text-center items-center bg-c3-orange text-white py-2 items-center"
               @click="$emit('confirm')"
             >
-              <button-arrow class="hidden md:flex h-2 w-auto " />
-              <button-arrow-sm class="md:hidden h-2 w-auto " />
+              <button-arrow class="hidden md:flex h-2 w-auto mr-2" />
+              <button-arrow-sm class="md:hidden h-2 w-auto mr-2" />
 
               Continue
             </button>
