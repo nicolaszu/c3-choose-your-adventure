@@ -20,14 +20,14 @@
                 type="text"
                 :value="currentURL"
                 disabled
-                class="border border-c3-teal p-2 mr-2 "
+                class="border border-c3-teal p-2 md:mr-2 "
                 :class="{
                   'outline-none ring-2 ring-c3-green border-transparent': isCopied,
                 }"
                 ref="inputCopy"
               />
               <button
-                class="bg-c3-green justify-center md:justify-start py-1 md:py-0 text-white"
+                class="bg-c3-green justify-center md:justify-start py-1 my-1 md:my-0 md:py-0 text-white"
                 v-clipboard:copy="currentURL"
                 v-clipboard:success="onCopy"
               >
