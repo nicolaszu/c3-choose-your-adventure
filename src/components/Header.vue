@@ -19,8 +19,15 @@
       </a>
     </div>
     <div class="flex items-center">
-       <a href="//www.c3toronto.com/decision" class="py-2">
+      <a
+        href="//www.c3toronto.com/decision"
+        class="py-2"
+        v-if="$route.name === 'play'"
+      >
         <button class="px-3">
+          <hand-icon
+            class="svg-16 xl:svg-24 mr-2 group-hover:animate-spin-slow"
+          />
           Raise Hand
         </button>
       </a>
@@ -43,6 +50,7 @@ import headerArrow from "@/assets/icons/header-arrow.svg?inline";
 import facebookIcon from "@/assets/icons/social-media/facebook.svg?inline";
 import instagramIcon from "@/assets/icons/social-media/instagram.svg?inline";
 import youtubeIcon from "@/assets/icons/social-media/youtube.svg?inline";
+import handIcon from "@/assets/icons/hand.svg?inline";
 
 export default {
   components: {
@@ -50,6 +58,7 @@ export default {
     facebookIcon,
     instagramIcon,
     youtubeIcon,
+    handIcon,
   },
 };
 </script>

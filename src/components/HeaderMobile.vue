@@ -10,8 +10,15 @@
       </a>
 
       <div class="flex gap-2 items-center text-sm">
-        <a href="//www.c3toronto.com/decision" class="py-2 hidden md:flex">
+        <a
+          v-if="$route.name === 'play'"
+          href="//www.c3toronto.com/decision"
+          class="py-2 hidden md:flex"
+        >
           <button class="px-3">
+            <hand-icon
+              class="svg-16 xl:svg-24 mr-2 group-hover:animate-spin-slow"
+            />
             Raise Hand
           </button>
         </a>
@@ -50,6 +57,9 @@
         <div class="flex items-center justify-evenly">
           <a href="//www.c3toronto.com/decision" class="py-2">
             <button class="px-0">
+              <hand-icon
+                class="svg-16 xl:svg-24 mr-2 group-hover:animate-spin-slow"
+              />
               Raise Hand
             </button>
           </a>
@@ -76,6 +86,7 @@ import youtubeIcon from "@/assets/icons/social-media/youtube.svg?inline";
 import menuIcon from "@/assets/icons/menu.svg?inline";
 import c3Logo from "@/assets/illustrations/c3-logo.svg";
 import vClickOutside from "v-click-outside";
+import handIcon from "@/assets/icons/hand.svg?inline";
 
 export default {
   directives: {
@@ -87,6 +98,7 @@ export default {
     youtubeIcon,
     menuIcon,
     c3Logo,
+    handIcon,
   },
   data() {
     return {

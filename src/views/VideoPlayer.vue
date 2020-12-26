@@ -81,6 +81,14 @@
         Share your Adventure
         <share-icon class="svg-20 xl:svg-24 ml-2" />
       </button>
+      <a href="//www.c3toronto.com/decision" class="">
+        <button
+          class="flex md:hidden text-center py-2 md:mr-8 mt-1 md:mt-0 items-center group text-sm xl:text-base"
+        >
+          <hand-icon class="svg-16 xl:svg-24 mr-2" />
+          Raise Hand
+        </button>
+      </a>
     </footer>
     <!-- <button id="cast">hello</button> -->
     <!-- <ShareNetwork
@@ -111,6 +119,7 @@ import ShareLinkModal from "@/components/modals/ShareLinkModal.vue";
 import WarningModal from "@/components/modals/WarningModal.vue";
 import shareIcon from "@/assets/icons/share.svg";
 import refreshIcon from "@/assets/icons/refresh.svg";
+import handIcon from "@/assets/icons/hand.svg";
 import slideIcon from "@/assets/icons/slide.svg";
 import titleXl from "@/assets/illustrations/adventure-title.svg";
 import c3Logo from "@/assets/illustrations/c3-logo.svg";
@@ -128,6 +137,7 @@ export default {
     titleXl,
     shareIcon,
     refreshIcon,
+    handIcon,
     slideIcon,
     ShareLinkModal,
     WarningModal,

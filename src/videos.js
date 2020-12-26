@@ -40,7 +40,7 @@ export default async function getVideos() {
         id: "ctUxuk7tPSM",
       },
       {
-        title: "Viktor",
+        title: "Victor",
         id: "DcLb5qxWuVM",
       },
       {
