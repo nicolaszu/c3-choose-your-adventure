@@ -9,7 +9,7 @@
         <div class="table-cell align-middle">
           <div
             @click.stop=""
-            class="modal-container bg-white rounded-xl  shadow-2xl shadow-reverse transition-all my-0 mx-auto relative	"
+            class="modal-container bg-white rounded-xl  shadow-y transition-all my-0 mx-auto relative	"
           >
             <button class=" p-0 ml-10 m-3 absolute right-0">
               <close-icon class="svg-24 text-gray-700" @click="toggleClose" />
@@ -77,7 +77,8 @@ export default {
   height: auto;
 }
 
-.shadow-reverse {
-  box-shadow: 0 -25px 50px -12px rgba(0, 0, 0, 0.25);
+.shadow-y {
+  box-shadow: 0 -25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 </style>

@@ -8,7 +8,7 @@
       <div class="table-cell align-middle">
         <div
           @click.stop=""
-          class="modal-container border-t-8 border-c3-teal shadow-reverse bg-white rounded-xl  shadow-2xl transition-all my-0 mx-auto relative	"
+          class="modal-container border-t-8 border-c3-teal shadow-y bg-white rounded-xl transition-all my-0 mx-auto relative	"
         >
           <button class=" p-0 ml-10 m-3 absolute right-0">
             <close-icon class="svg-24 text-gray-700" @click="$emit('close')" />
@@ -110,7 +110,8 @@ export default {
   width: 24px;
   height: auto;
 }
-.shadow-reverse {
-  box-shadow: 0 -25px 50px -12px rgba(0, 0, 0, 0.25);
+.shadow-y {
+  box-shadow: 0 -25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 </style>
