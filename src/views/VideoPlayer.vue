@@ -32,7 +32,7 @@
         :video-id="urlPlaylist[playlistStartIndex]"
         ref="youtube"
         @ended="ended"
-        :player-vars="{ autoplay: 1 }"
+        :player-vars="{ autoplay: 1, playsinline: 1, mute: 1 }"
       ></youtube>
     </div>
     <div
