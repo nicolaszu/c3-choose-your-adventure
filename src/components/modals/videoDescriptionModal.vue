@@ -2,7 +2,7 @@
   <portal selector="#description-modal">
     <transition name="modal">
       <div
-        class="fixed  top-0 left-0 w-full h-full bg-black bg-opacity-50 table transition-opacity "
+        class="fixed  top-0 left-0 w-full h-full mb-64 md:mb-0 bg-black bg-opacity-50 table transition-opacity "
         :style="{ 'z-index': '9999' }"
         @click="toggleClose"
       >

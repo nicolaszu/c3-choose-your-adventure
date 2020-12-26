@@ -31,7 +31,8 @@
         class="absolute top-0 left-0 w-full h-full"
         :video-id="urlPlaylist[playlistStartIndex]"
         ref="youtube"
-        @playing="playing"
+        @ended="ended"
+        :player-vars="{ autoplay: 1 }"
       ></youtube>
     </div>
     <div
@@ -147,23 +148,20 @@ export default {
     this.urlPlaylist = this.$route.query.videos;
   },
   mounted() {
-    this.player.addEventListener("onStateChange", this.onytplayerStateChange);
     window.addEventListener("resize", () => {
       this.windowWidth = window.innerWidth;
     });
-    this.$nextTick(() => {
-      this.playVideo();
-    });
+    // this.$nextTick(() => {
+    //   this.player.cueVideoById(this.getNextVideo(), 0);
+    // });
   },
   methods: {
     playVideo() {
       this.player.playVideo();
     },
-    playing() {
-      console.log("/ we are watching!!!");
-    },
-    onytplayerStateChange(newState) {
-      if (newState.data === 0 && !this.isLastVideo) {
+
+    ended() {
+      if (!this.isLastVideo) {
         this.player.loadVideoById(this.getNextVideo(), 0, "large");
         this.player.playVideo();
       }
