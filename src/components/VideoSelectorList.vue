@@ -83,7 +83,7 @@ export default {
   }
 
   @screen lg {
-    grid-template-columns: repeat(auto-fill, 14rem);
+    grid-template-columns: repeat(auto-fill, 12rem);
   }
 
   @screen xl {
