@@ -1,7 +1,7 @@
 <template>
   <transition name="modal">
     <div
-      class="fixed  top-0 left-0 w-full h-full  md:bg-black md:bg-opacity-50 table transition-opacity "
+      class="fixed  top-0 left-0 w-full h-full shadow-reverse md:bg-black md:bg-opacity-50 table transition-opacity "
       :style="{ 'z-index': '9999' }"
       @click="$emit('close')"
     >
@@ -109,5 +109,8 @@ export default {
 .close-icon {
   width: 24px;
   height: auto;
+}
+.shadow-reverse {
+  box-shadow: 0 -25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 </style>
