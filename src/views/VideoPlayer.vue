@@ -162,7 +162,7 @@ export default {
 
     ended() {
       if (!this.isLastVideo) {
-        this.player.loadVideoById(this.getNextVideo(), 0, "large");
+        // this.player.loadVideoById(this.getNextVideo(), 0, "large");
         this.player.playVideo();
       }
     },

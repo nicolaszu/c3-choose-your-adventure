@@ -30,8 +30,9 @@ html {
   background: #a2cad4;
 }
 body {
-  min-height: 100%;
-  width: 100%;
-  // height: 100%;
+  @screen md {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
