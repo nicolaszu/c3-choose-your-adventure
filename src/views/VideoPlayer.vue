@@ -151,9 +151,9 @@ export default {
     window.addEventListener("resize", () => {
       this.windowWidth = window.innerWidth;
     });
-    // this.$nextTick(() => {
-    //   this.player.cueVideoById(this.getNextVideo(), 0);
-    // });
+    this.$nextTick(() => {
+      this.player.playVideo();
+    });
   },
   methods: {
     playVideo() {
