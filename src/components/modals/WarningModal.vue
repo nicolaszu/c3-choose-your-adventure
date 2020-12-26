@@ -1,14 +1,14 @@
 <template>
   <transition name="modal">
     <div
-      class="fixed  top-0 left-0 w-full h-full shadow-reverse md:bg-black md:bg-opacity-50 table transition-opacity "
+      class="fixed  top-0 left-0 w-full h-full  md:bg-black md:bg-opacity-50 table transition-opacity "
       :style="{ 'z-index': '9999' }"
       @click="$emit('close')"
     >
       <div class="table-cell align-middle">
         <div
           @click.stop=""
-          class="modal-container border-t-8 border-c3-teal  bg-white rounded-xl  shadow-2xl transition-all my-0 mx-auto relative	"
+          class="modal-container border-t-8 border-c3-teal shadow-reverse bg-white rounded-xl  shadow-2xl transition-all my-0 mx-auto relative	"
         >
           <button class=" p-0 ml-10 m-3 absolute right-0">
             <close-icon class="svg-24 text-gray-700" @click="$emit('close')" />
