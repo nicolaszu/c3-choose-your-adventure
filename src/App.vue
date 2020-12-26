@@ -27,9 +27,12 @@ export default {
 html {
   width: 100%;
   height: 100%;
+  background: #a2cad4;
 }
 body {
-  width: 100%;
-  height: 100%;
+  @screen md {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

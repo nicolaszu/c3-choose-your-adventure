@@ -64,7 +64,7 @@
       class="flex flex-wrap-reverse md:row-start-2 md:col-start-2 md:col-span-2  xl:flex-row justify-center row-start-3 col-start-2  xl:col-start-1 xl:col-span-full xl:row-start-3 items-center  bottom-0 xl:my-7  w-full "
     >
       <button
-        class="flex text-center py-2 mr-8 items-center group text-sm xl:text-base"
+        class="flex text-center py-2 md:mr-8 mt-1 md:mt-0 items-center group text-sm xl:text-base"
         @click="showWarningModal = true"
       >
         <refresh-icon
@@ -201,7 +201,7 @@ export default {
       return this.urlPlaylist.length === this.playlistCurrentIndex + 1;
     },
     isMobile() {
-      return this.windowWidth <= parseInt(fullConfig.theme.screens.xl);
+      return this.windowWidth < parseInt(fullConfig.theme.screens.xl);
     },
     playlistTimeLength() {
       let length = moment.duration("00:00:00");

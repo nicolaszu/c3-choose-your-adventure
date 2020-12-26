@@ -10,15 +10,18 @@
       </a>
 
       <div class="flex gap-2 items-center text-sm">
+        <a href="//www.c3toronto.com/decision" class="py-2 hidden md:flex">
+          <button class="px-3">
+            Raise Hand
+          </button>
+        </a>
         <a href="//www.c3toronto.com/connect">
           <button>
             Connect
           </button>
         </a>
         <a href="//www.c3toronto.com/giving">
-          <button
-            class="bg-c3-orange  text-white text-sm py-1 "
-          >
+          <button class="bg-c3-orange  text-white text-sm py-1 ">
             Give
           </button>
         </a>
@@ -42,6 +45,23 @@
           </a>
           <a href="//www.youtube.com/c3toronto" class="p-2">
             <youtubeIcon class="svg-20" />
+          </a>
+        </div>
+        <div class="flex items-center justify-evenly">
+          <a href="//www.c3toronto.com/decision" class="py-2">
+            <button class="px-0">
+              Raise Hand
+            </button>
+          </a>
+          <a href="//www.c3toronto.com/connect">
+            <button class=" px-0">
+              Connect
+            </button>
+          </a>
+          <a href="//www.c3toronto.com/giving">
+            <button class="bg-c3-orange  text-white text-sm py-1 ">
+              Give
+            </button>
           </a>
         </div>
       </div>

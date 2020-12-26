@@ -3,9 +3,11 @@
     <div
       class="fixed  top-0 left-0 w-full h-full bg-black bg-opacity-50 table transition-opacity "
       :style="{ 'z-index': '9999' }"
+      @click="$emit('close')"
     >
       <div class="table-cell align-middle">
         <div
+          @click.stop=""
           class="modal-container border-t-8 border-c3-teal  bg-white rounded-xl  shadow-2xl transition-all my-0 mx-auto relative	"
         >
           <button class=" p-0 ml-10 m-3 absolute right-0">

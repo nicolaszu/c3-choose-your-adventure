@@ -32,7 +32,7 @@
       <p
         class="md:bottom-0 md:-mb-5 md:mr-5 md:absolute col-span-2 justify-self-end md:col-row-3"
       >
-        * Optional
+        *Optional
       </p>
     </main>
 
@@ -97,7 +97,7 @@ export default {
         },
         {
           color: "bg-c3-orange",
-          name: "Select your story *",
+          name: "Select your story*",
         },
         {
           color: "bg-c3-red",

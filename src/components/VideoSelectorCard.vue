@@ -16,7 +16,9 @@
     </div>
     <div class="image-wrapper relative" v-if="thumbnail">
       <img :src="thumbnail" alt="video" class="" />
-      <p class="absolute bottom-0 right-0 m-2 bg-gray-1 px-3 rounded-md text-white font-bold text-sm">
+      <p
+        class="absolute bottom-0 right-0 m-2 bg-gray-1 px-3 rounded-md text-white font-bold text-sm"
+      >
         {{ videoMeta.time }}
       </p>
     </div>
@@ -42,7 +44,25 @@
           {{ videoMeta.author }}
         </p>
       </div>
-      <popover v-if="videoMeta.description" :onHover="true" @click.stop="">
+      <button class=" flex md:hidden p-0 items-start">
+        <info-icon
+          v-if="videoMeta.description"
+          @click.stop=""
+          @click="showDescriptionModal = true"
+          class="svg-20 "
+          :class="[
+            isSelected && category !== 'C3 Kids'
+              ? 'text-white'
+              : 'text-gray-700',
+          ]"
+        />
+      </button>
+      <popover
+        v-if="videoMeta.description"
+        :onHover="true"
+        @click.stop=""
+        class="hidden md:flex"
+      >
         <template #trigger>
           <info-icon
             class="svg-20"
@@ -64,6 +84,11 @@
         </template>
       </popover>
     </div>
+    <videoDescriptionModal
+      :videoMeta="videoMeta"
+      v-if="showDescriptionModal"
+      @close="showDescriptionModal = false"
+    />
   </div>
 </template>
 
@@ -72,16 +97,19 @@ import { mapGetters, mapMutations, mapState } from "vuex";
 import checkIcon from "@/assets/icons/check.svg?inline";
 import infoIcon from "@/assets/icons/info.svg?inline";
 import Popover from "@/components/Popover";
+import videoDescriptionModal from "@/components/modals/videoDescriptionModal";
 
 export default {
   components: {
     checkIcon,
     infoIcon,
     Popover,
+    videoDescriptionModal,
   },
   data() {
     return {
       thumbnail: "",
+      showDescriptionModal: false,
     };
   },
   props: {

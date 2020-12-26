@@ -19,8 +19,13 @@
       </a>
     </div>
     <div class="flex items-center">
-      <a href="//www.c3toronto.com/connect" class="p-2">
-        <button>
+       <a href="//www.c3toronto.com/decision" class="py-2">
+        <button class="px-3">
+          Raise Hand
+        </button>
+      </a>
+      <a href="//www.c3toronto.com/connect" class="py-2 px-0">
+        <button class="px-3 mr-3">
           Connect
         </button>
       </a>

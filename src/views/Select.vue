@@ -106,6 +106,7 @@
         </transition>
       </div>
     </footer>
+    <div id="description-modal" />
   </div>
 </template>
 
